@@ -156,6 +156,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/antd%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/04/25/antd%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">antd表格的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-04-25 11:23:35" itemprop="dateCreated datePublished" datetime="2018-04-25T11:23:35+08:00">2018-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-20 22:08:35" itemprop="dateModified" datetime="2020-05-20T22:08:35+08:00">2020-05-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://wx1.sinaimg.cn/mw690/77a03329gy1fqoqx0tomzj20tj08xq3d.jpg" alt="image"></p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在实现一个固定列表格的时候，产生了如图的空隙。</p>
+<h4 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h4><p>antd组件实现上，固定列和下方表格是分开实现的，在下方表格的每一行其实也实现了固定的三列，只是被挡住了。审查过程中发现，固定列td的宽度和下方表格td的宽度表现不一致，下方表格td的宽度比固定列td的宽度多一个像素。</p>
+<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>把前面固定的三列宽度设宽一点</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/%E4%BF%9D%E5%AD%98%E6%97%B6%EF%BC%8C%E8%A1%A8%E5%8D%95%E7%8A%B6%E6%80%81%E5%8F%91%E7%94%9F%E5%9B%9E%E8%B7%B3%EF%BC%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -364,14 +432,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

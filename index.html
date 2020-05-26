@@ -156,6 +156,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/React%E7%9A%84diff%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/React%E7%9A%84diff%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">React的diff算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-26 21:59:21 / 修改时间：22:23:15" itemprop="dateCreated datePublished" datetime="2020-05-26T21:59:21+08:00">2020-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="调和"><a href="#调和" class="headerlink" title="调和"></a>调和</h4><p>将Virtual DOM树转换成actual DOM树的最少操作的过程称为<code>调和</code> 。</p>
+<h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p>O(n^3) -&gt; O(n)</p>
+<h4 id="diff策略"><a href="#diff策略" class="headerlink" title="diff策略"></a>diff策略</h4><p>React用 三大策略 将O(n^3)复杂度 转化为 O(n)复杂度</p>
+<h5 id="策略一（tree-diff）："><a href="#策略一（tree-diff）：" class="headerlink" title="策略一（tree diff）："></a>策略一（tree diff）：</h5><p>Web UI中DOM节点跨层级的移动操作特别少，可以忽略不计。</p>
+<h5 id="策略二（component-diff）："><a href="#策略二（component-diff）：" class="headerlink" title="策略二（component diff）："></a>策略二（component diff）：</h5><p>拥有相同类的两个组件 生成相似的树形结构，<br>拥有不同类的两个组件 生成不同的树形结构。</p>
+<h5 id="策略三（element-diff）："><a href="#策略三（element-diff）：" class="headerlink" title="策略三（element diff）："></a>策略三（element diff）：</h5><p>对于同一层级的一组子节点，通过唯一id区分。</p>
+<ul>
+<li>tree diff</li>
+<li>component diff</li>
+<li>element diff</li>
+</ul>
+<h4 id="描述a-b-c-d节点变化成b-a-d-c的过程"><a href="#描述a-b-c-d节点变化成b-a-d-c的过程" class="headerlink" title="描述a b c d节点变化成b a d c的过程"></a>描述a b c d节点变化成b a d c的过程</h4><p>a b c d<br>| | | |<br>b a d c</p>
+<h4 id="描述a-b-c-d节点变化成b-e-c-a的过程"><a href="#描述a-b-c-d节点变化成b-e-c-a的过程" class="headerlink" title="描述a b c d节点变化成b e c a的过程"></a>描述a b c d节点变化成b e c a的过程</h4><p>a b c d<br>| | | |<br>b e c a</p>
+<h4 id="描述a-b-c-d节点变化成d-a-b-c的过程"><a href="#描述a-b-c-d节点变化成d-a-b-c的过程" class="headerlink" title="描述a b c d节点变化成d a b c的过程"></a>描述a b c d节点变化成d a b c的过程</h4><p>a b c d<br>| | | |<br>d a b c</p>
+<p>参考文章<a href="https://www.jianshu.com/p/3ba0822018cf" target="_blank" rel="noopener">https://www.jianshu.com/p/3ba0822018cf</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/react-vdom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -801,74 +874,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/antd%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
-      <meta itemprop="name" content="wandouni">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云梦泽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/25/antd%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">antd表格的坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-25 11:23:35" itemprop="dateCreated datePublished" datetime="2018-04-25T11:23:35+08:00">2018-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-20 22:08:35" itemprop="dateModified" datetime="2020-05-20T22:08:35+08:00">2020-05-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://wx1.sinaimg.cn/mw690/77a03329gy1fqoqx0tomzj20tj08xq3d.jpg" alt="image"></p>
-<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在实现一个固定列表格的时候，产生了如图的空隙。</p>
-<h4 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h4><p>antd组件实现上，固定列和下方表格是分开实现的，在下方表格的每一行其实也实现了固定的三列，只是被挡住了。审查过程中发现，固定列td的宽度和下方表格td的宽度表现不一致，下方表格td的宽度比固定列td的宽度多一个像素。</p>
-<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>把前面固定的三列宽度设宽一点</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -940,14 +945,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
