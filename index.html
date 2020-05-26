@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -156,6 +156,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/react-vdom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/react-vdom/" class="post-title-link" itemprop="url">react vdom</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-26 21:22:35 / 修改时间：21:50:41" itemprop="dateCreated datePublished" datetime="2020-05-26T21:22:35+08:00">2020-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="vdom本质是什么"><a href="#vdom本质是什么" class="headerlink" title="vdom本质是什么"></a>vdom本质是什么</h3><p>描述渲染内容的js对象，形如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,</span><br><span class="line">  &quot;type&quot;:&quot;div&quot;,</span><br><span class="line">  &quot;key&quot;:null,</span><br><span class="line">  &quot;ref&quot;:null,</span><br><span class="line">  &quot;props&quot;:&#123;</span><br><span class="line">    &quot;children&quot;:[</span><br><span class="line">      &quot;这是一个tag&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,</span><br><span class="line">        &quot;type&quot;:&quot;div&quot;,</span><br><span class="line">        &quot;key&quot;:null,</span><br><span class="line">        &quot;ref&quot;:null,</span><br><span class="line">        &quot;props&quot;:&#123;&quot;children&quot;:&quot;555&quot;&#125;,</span><br><span class="line">        &quot;_owner&quot;:null,&quot;_store&quot;:&#123;&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;type&quot;: &quot;class Tag&quot;,</span><br><span class="line">        &quot;key&quot;:null,</span><br><span class="line">        &quot;ref&quot;:null,</span><br><span class="line">        &quot;props&quot;:&#123;&#125;,</span><br><span class="line">        &quot;_owner&quot;:null,</span><br><span class="line">        &quot;_store&quot;:&#123;&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;_owner&quot;:null,</span><br><span class="line">  &quot;_store&quot;:&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">由创建</span><br></pre></td></tr></table></figure>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">  type,</span><br><span class="line">  [props],</span><br><span class="line">  [...children]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/package-lock-json%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/package-lock-json%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/" class="post-title-link" itemprop="url">package-lock.json文件的作用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-26 16:48:51 / 修改时间：21:02:48" itemprop="dateCreated datePublished" datetime="2020-05-26T16:48:51+08:00">2020-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由以下几个方面展开说：</p>
+<ol>
+<li>引起整个思考整个问题的场景</li>
+<li>package-lock.json和package.json各自的功能和区别</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/22/%E7%91%B6%E7%91%B6%E5%85%AC%E4%B8%BB%E8%AF%AD%E9%9F%B3%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,7 +304,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-22 00:39:44 / 修改时间：00:47:35" itemprop="dateCreated datePublished" datetime="2020-05-22T00:39:44+08:00">2020-05-22</time>
+              <time title="创建时间：2020-05-22 00:39:44 / 修改时间：00:52:56" itemprop="dateCreated datePublished" datetime="2020-05-22T00:39:44+08:00">2020-05-22</time>
             </span>
 
           
@@ -746,149 +869,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/%E4%BF%9D%E5%AD%98%E6%97%B6%EF%BC%8C%E8%A1%A8%E5%8D%95%E7%8A%B6%E6%80%81%E5%8F%91%E7%94%9F%E5%9B%9E%E8%B7%B3%EF%BC%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
-      <meta itemprop="name" content="wandouni">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云梦泽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/25/%E4%BF%9D%E5%AD%98%E6%97%B6%EF%BC%8C%E8%A1%A8%E5%8D%95%E7%8A%B6%E6%80%81%E5%8F%91%E7%94%9F%E5%9B%9E%E8%B7%B3%EF%BC%81/" class="post-title-link" itemprop="url">保存时，表单状态发生回跳！</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-25 11:22:46" itemprop="dateCreated datePublished" datetime="2018-04-25T11:22:46+08:00">2018-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-20 22:08:35" itemprop="dateModified" datetime="2020-05-20T22:08:35+08:00">2020-05-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>负荷预测-首页-预测设置-点击保存,向后台发起保存请求，更改后的表单状态，会回跳到初始状态。</p>
-<h4 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h4><p><img src="https://wx1.sinaimg.cn/mw690/77a03329gy1fqoqx0u79tj20ei07fq2w.jpg" alt="image"></p>
-<p>如图表单的值，初始化的时候，应该显示为后台接口传过的值,那么这些值应该是props。</p>
-<p>但是它同时在组件后续的生命周期中需要有保存的操作，那么改变后的值，应该是组件内部持有的状态，也就是state，以方便保存操作时取值。</p>
-<p>那就是说，在初始化之后，我就应该将这些prop存储为state，render函数中不能做更新操作，然后我选择了在componentWillReceiveProps中截获nextProps,设置给state。</p>
-<p>然后再保存的时候，发起了action修改，Reducer函数算出新的State,View重新渲染，componentWillReceiveProps函数再次执行，组件内部的state被重置为初始化的值，就发生了数据回跳的情况。</p>
-<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>在componentWillReceiveProps中进行判断，如果此数据没有进行过更新操作，就不做setState的操作，在具体代码中以hash进行判断，就避免了其他数据更新引起的重新渲染导致state的重设。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/%E4%BD%BF%E7%94%A8antd%E7%BB%84%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
-      <meta itemprop="name" content="wandouni">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云梦泽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/25/%E4%BD%BF%E7%94%A8antd%E7%BB%84%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">使用antd组件遇到的坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-25 11:19:58" itemprop="dateCreated datePublished" datetime="2018-04-25T11:19:58+08:00">2018-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-20 22:08:35" itemprop="dateModified" datetime="2020-05-20T22:08:35+08:00">2020-05-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="div不能是p的子元素"><a href="#div不能是p的子元素" class="headerlink" title="div不能是p的子元素"></a>div不能是p的子元素</h4><p>错误代码提示如下图所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:&lt;div&gt; cannot appear as a descendant of &lt;p&gt;</span><br></pre></td></tr></table></figure>
-<p>意思是，div不能是p的子元素。</p>
-<p>一开始审查自己的代码结构，发现并没有什么不对，code里面虽然有p标签，但我不至于犯在p标签里面，嵌套div标签的低级错误。</p>
-<p>但是F12审查文档元素的时候，发现生成的html文档里面的确是p嵌套了div。</p>
-<p>原因是我在p标签里面，使用了antd的组件，组件内部结构有div标签，导致报错！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -955,14 +940,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

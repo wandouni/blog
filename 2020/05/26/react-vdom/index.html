@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="vdom本质是什么描述渲染内容的js对象，形如： 123456789101112131415161718192021222324252627282930&amp;#123;  &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,  &quot;type&quot;:&quot;div&quot;,  &quot;key&quot;:null,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react vdom">
+<meta property="og:url" content="http://yoursite.com/2020/05/26/react-vdom/index.html">
 <meta property="og:site_name" content="云梦泽">
+<meta property="og:description" content="vdom本质是什么描述渲染内容的js对象，形如： 123456789101112131415161718192021222324252627282930&amp;#123;  &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,  &quot;type&quot;:&quot;div&quot;,  &quot;key&quot;:null,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-21T16:30:09.000Z">
-<meta property="article:modified_time" content="2020-05-21T16:30:09.163Z">
+<meta property="article:published_time" content="2020-05-26T13:22:35.000Z">
+<meta property="article:modified_time" content="2020-05-26T13:50:41.893Z">
 <meta property="article:author" content="wandouni">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="vdom">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/categories/">
+<link rel="canonical" href="http://yoursite.com/2020/05/26/react-vdom/">
 
 
 <script id="page-configurations">
@@ -38,13 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>categories | 云梦泽
-</title>
+  <title>react vdom | 云梦泽</title>
   
 
 
@@ -152,43 +155,85 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/react-vdom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          react vdom
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-05-26 21:22:35 / 修改时间：21:50:41" itemprop="dateCreated datePublished" datetime="2020-05-26T21:22:35+08:00">2020-05-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="vdom本质是什么"><a href="#vdom本质是什么" class="headerlink" title="vdom本质是什么"></a>vdom本质是什么</h3><p>描述渲染内容的js对象，形如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,</span><br><span class="line">  &quot;type&quot;:&quot;div&quot;,</span><br><span class="line">  &quot;key&quot;:null,</span><br><span class="line">  &quot;ref&quot;:null,</span><br><span class="line">  &quot;props&quot;:&#123;</span><br><span class="line">    &quot;children&quot;:[</span><br><span class="line">      &quot;这是一个tag&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;$$typeof&quot;: &quot;Symbol(react.element)&quot;,</span><br><span class="line">        &quot;type&quot;:&quot;div&quot;,</span><br><span class="line">        &quot;key&quot;:null,</span><br><span class="line">        &quot;ref&quot;:null,</span><br><span class="line">        &quot;props&quot;:&#123;&quot;children&quot;:&quot;555&quot;&#125;,</span><br><span class="line">        &quot;_owner&quot;:null,&quot;_store&quot;:&#123;&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;type&quot;: &quot;class Tag&quot;,</span><br><span class="line">        &quot;key&quot;:null,</span><br><span class="line">        &quot;ref&quot;:null,</span><br><span class="line">        &quot;props&quot;:&#123;&#125;,</span><br><span class="line">        &quot;_owner&quot;:null,</span><br><span class="line">        &quot;_store&quot;:&#123;&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;_owner&quot;:null,</span><br><span class="line">  &quot;_store&quot;:&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">由创建</span><br></pre></td></tr></table></figure>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">  type,</span><br><span class="line">  [props],</span><br><span class="line">  [...children]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+              <a href="/tags/vdom/" rel="tag"># vdom</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/26/package-lock-json%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/" rel="prev" title="package-lock.json文件的作用">
+      <i class="fa fa-chevron-left"></i> package-lock.json文件的作用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -239,6 +284,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vdom本质是什么"><span class="nav-number">1.</span> <span class="nav-text">vdom本质是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement"><span class="nav-number">2.</span> <span class="nav-text">createElement</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
