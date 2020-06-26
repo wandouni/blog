@@ -156,6 +156,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/%E5%92%8CObject-keys%E5%BE%AA%E7%8E%AF%E5%87%BA%E6%9D%A5%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E9%A1%BA%E5%BA%8F%E5%88%B0%E5%BA%95%E9%81%B5%E5%BE%AA%E4%BB%80%E4%B9%88%E8%A7%84%E5%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
+      <meta itemprop="name" content="wandouni">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云梦泽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/24/%E5%92%8CObject-keys%E5%BE%AA%E7%8E%AF%E5%87%BA%E6%9D%A5%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E9%A1%BA%E5%BA%8F%E5%88%B0%E5%BA%95%E9%81%B5%E5%BE%AA%E4%BB%80%E4%B9%88%E8%A7%84%E5%BE%8B/" class="post-title-link" itemprop="url">Object.keys循环出来的对象属性顺序到底遵循什么规律'</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-24 17:16:42" itemprop="dateCreated datePublished" datetime="2020-06-24T17:16:42+08:00">2020-06-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-26 20:32:35" itemprop="dateModified" datetime="2020-06-26T20:32:35+08:00">2020-06-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天在写业务代码的时候定义了一个这样的对象数据结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let Map &#x3D; &#123;</span><br><span class="line">  &#39;00&#39;: &#123;</span><br><span class="line">    name: &#39;未修改未计算&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#39;01&#39;: &#123;</span><br><span class="line">    name: &#39;未修改已计算&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#39;10&#39;: &#123;</span><br><span class="line">    name: &#39;已修改未计算&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#39;11&#39;: &#123;</span><br><span class="line">    name: &#39;已修改已计算&#39;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>循环它</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Object.keys(Map)</span><br><span class="line"></span><br><span class="line">for(let k in Map)&#123;</span><br><span class="line">  console.log(k)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">11</span><br><span class="line">00</span><br><span class="line">01</span><br></pre></td></tr></table></figure>
+<p>🤣这个结果实在让人困惑，但也说明并不是照我想象的按照定义顺序输出，那为啥是这么个顺序呢。</p>
+<p>首先先去MDN !</p>
+<p>先查看<code>Object.keys()</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。</span><br></pre></td></tr></table></figure>
+<p>没啥东西，那看看<code>for...in</code></p>
+<p>在提到<code>数组迭代和 for...in</code>时，有这么一段话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">因为迭代的顺序是依赖于执行环境的，所以数组遍历不一定按次序访问元素。因此当迭代访问顺序很重要的数组时，最好用整数索引去进行for循环（或者使用 Array.prototype.forEach() 或 for...of 循环）</span><br></pre></td></tr></table></figure>
+<p>在迭代数组的时候可能不一定按次序访问数组元素，那这里我们定义的对象是有点类数组的，不按照顺序访问元素，那按照什么规则访问数组元素呢？</p>
+<p>然后找到了这篇文章:</p>
+<p><a href="https://blog.csdn.net/yesicatt/article/details/53557962" target="_blank" rel="noopener">Chrome Opera 中 for-in 语句遍历出对象属性的顺序与定义的不同</a></p>
+<p>可以发现：</p>
+<p>for-in 语句的属性遍历的顺序在 <code>ECMA-262（ECMAScript）</code>版本迭代的过程中定义是有变化的。</p>
+<p>第三版是<code>对象定义时属性的书写顺序决定的</code></p>
+<p>第五版是<code>属性遍历的顺序是没有被规定的</code></p>
+<p>那么根据不同版本规范实现的js解析引擎对for-in的处理是有区别的！</p>
+<p>这篇文章总结为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chrome Opera 中使用 for-in 语句遍历对象属性时会遵循一个规律，它们会先提取所有 key 的 parseFloat 值为非负整数的属性， 然后根据数字顺序对属性排序首先遍历出来，然后按照对象定义的顺序遍历余下的所有属性。其它浏览器则完全按照对象定义的顺序遍历属性。</span><br></pre></td></tr></table></figure>
+<p>在这里我们定义的第一个key ‘00’ parseFloat(‘00’)等于0，0属于非负整数，那么这么说应该在循环输出的第一个，然而并不是，那要怎么理解呢？</p>
+<p>知乎大法好，于是找到了这个：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/58401380" target="_blank" rel="noopener">JS for…in 循环出来的对象属性顺序到底是什么规律？</a></p>
+<p>总结是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先遍历出整数属性（integer properties，按照升序），然后其他属性按照创建时候的顺序遍历出来。</span><br></pre></td></tr></table></figure>
+<p>那什么是整数属性呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String(Math.trunc(Number(prop)) &#x3D;&#x3D;&#x3D; prop;</span><br><span class="line">&#x2F;&#x2F; 当上面的判断结果为 true，prop 就是整数属性，否则不是。</span><br></pre></td></tr></table></figure>
+<p>然后我发现他参考了</p>
+<p><a href="https://javascript.info/object#the-for-in-loop" target="_blank" rel="noopener">https://javascript.info/object#the-for-in-loop</a></p>
+<p>🤣 一个宝藏js外文网站</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/31/npx%E7%9A%84%E4%BD%9C%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -798,71 +895,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/math-min%E7%9A%84%E5%B0%8F%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://wx4.sinaimg.cn/mw1024/77a03329gy1gbbldpujttj21zv2ns4hx.jpg">
-      <meta itemprop="name" content="wandouni">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="云梦泽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/04/25/math-min%E7%9A%84%E5%B0%8F%E5%9D%91/" class="post-title-link" itemprop="url">math.min的小坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-25 11:28:18" itemprop="dateCreated datePublished" datetime="2018-04-25T11:28:18+08:00">2018-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-19 20:55:18" itemprop="dateModified" datetime="2020-05-19T20:55:18+08:00">2020-05-19</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://wx2.sinaimg.cn/mw690/77a03329gy1fqoqx0t2qvj205g012dfl.jpg" alt="image"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -934,7 +966,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
